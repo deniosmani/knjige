@@ -1,0 +1,5 @@
+com\knjige\KnjigeApplication.class
+com\knjige\model\Knjiga.class
+com\knjige\service\KnjigaService.class
+com\knjige\controller\KnjigaController.class
+com\knjige\repository\KnjigaRepository.class
