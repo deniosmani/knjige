@@ -56,6 +56,7 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <mainClass>com.knjige.KnjigeApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>
