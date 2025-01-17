@@ -15,6 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/knjige")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class KnjigaController {
     private static final Logger logger = LoggerFactory.getLogger(KnjigaController.class);
     
