@@ -1,1 +1,1 @@
-web: java -jar target/*.jar 
+web: java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar target/knjige-backend-0.0.1-SNAPSHOT.jar 
