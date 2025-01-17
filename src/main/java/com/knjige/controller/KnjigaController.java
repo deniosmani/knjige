@@ -5,6 +5,9 @@ import com.knjige.service.KnjigaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +16,8 @@ import java.util.Map;
 @RequestMapping("/api/knjige")
 @RequiredArgsConstructor
 public class KnjigaController {
-
+    private static final Logger logger = LoggerFactory.getLogger(KnjigaController.class);
+    
     private final KnjigaService knjigaService;
     
     @Value("${MYSQLHOST:not_set}")
@@ -27,6 +31,15 @@ public class KnjigaController {
     
     @Value("${MYSQLUSER:not_set}")
     private String mysqlUser;
+
+    @PostConstruct
+    public void init() {
+        logger.info("MySQL Configuration:");
+        logger.info("Host: {}", mysqlHost);
+        logger.info("Port: {}", mysqlPort);
+        logger.info("Database: {}", mysqlDatabase);
+        logger.info("User: {}", mysqlUser);
+    }
 
     @GetMapping("/search")
     public List<Knjiga> searchKnjige(
