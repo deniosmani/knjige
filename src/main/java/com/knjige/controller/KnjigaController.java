@@ -20,6 +20,9 @@ public class KnjigaController {
     
     private final KnjigaService knjigaService;
     
+    @Value("${spring.datasource.url:not_set}")
+    private String dbUrl;
+    
     @Value("${MYSQLHOST:not_set}")
     private String mysqlHost;
     
@@ -34,11 +37,13 @@ public class KnjigaController {
 
     @PostConstruct
     public void init() {
-        logger.info("MySQL Configuration:");
-        logger.info("Host: {}", mysqlHost);
-        logger.info("Port: {}", mysqlPort);
-        logger.info("Database: {}", mysqlDatabase);
-        logger.info("User: {}", mysqlUser);
+        logger.error("=== DEBUGGING DATABASE CONNECTION ===");
+        logger.error("Database URL: {}", dbUrl);
+        logger.error("Host: {}", mysqlHost);
+        logger.error("Port: {}", mysqlPort);
+        logger.error("Database: {}", mysqlDatabase);
+        logger.error("User: {}", mysqlUser);
+        logger.error("=====================================");
     }
 
     @GetMapping("/search")
