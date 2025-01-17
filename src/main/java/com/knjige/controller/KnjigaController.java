@@ -3,6 +3,8 @@ package com.knjige.controller;
 import com.knjige.model.Knjiga;
 import com.knjige.service.KnjigaService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
@@ -16,6 +18,7 @@ import java.util.Map;
 @RequestMapping("/api/knjige")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
+@Slf4j
 public class KnjigaController {
     private static final Logger logger = LoggerFactory.getLogger(KnjigaController.class);
     
@@ -52,7 +55,11 @@ public class KnjigaController {
             @RequestParam(required = false) String razred,
             @RequestParam(required = false) String predmet,
             @RequestParam(required = false) String izdavac) {
-        return knjigaService.findByFilters(razred, predmet, izdavac);
+        log.info("Received search request - razred: {}, predmet: {}, izdavac: {}", 
+                razred, predmet, izdavac);
+        List<Knjiga> results = knjigaService.findByFilters(razred, predmet, izdavac);
+        log.info("Returning {} results", results.size());
+        return results;
     }
     
     @GetMapping("/env")
