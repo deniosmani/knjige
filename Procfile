@@ -1,1 +1,1 @@
-web: env && java -Dlogging.level.org.springframework=DEBUG -jar target/knjige-backend-0.0.1-SNAPSHOT.jar 
+web: printenv && java -jar target/knjige-backend-0.0.1-SNAPSHOT.jar 
